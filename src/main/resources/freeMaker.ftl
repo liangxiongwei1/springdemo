@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<msg>
+    <mysql>
+        <server>127.0.0.1</server>
+        <port>4406</port>
+        <user>root</user>
+        <passwd></passwd>
+        <db>dnake</db>
+    </mysql>
+    <query>
+        <proxy>0</proxy>
+    </query>
+    <jpg>../tomcat-6.0.36/webapps/ROOT/snapshot</jpg>
+    <redirect>
+        <alarm>
+            <enable>1</enable>
+            <url>http://127.0.0.1:8088/abc/alarm.cgi</url>
+        </alarm>
+        <defence>
+            <enable>1</enable>
+            <url>http://127.0.0.1:8088/abc/alarm.cgi</url>
+        </defence>
+        <card>
+            <enable>1</enable>
+            <url>http://${cardIP}/DNAKE/abc/card.cgi</url>
+        </card>
+        <talk>
+            <enable>1</enable>
+            <url>http://127.0.0.1:8080/abc/talk.cgi</url>
+        </talk>
+        <jpeg>
+            <enable>1</enable>
+            <url>http://127.0.0.1:8080/abc/jpeg.cgi</url>
+        </jpeg>
+        <lock>
+            <enable>1</enable>
+            <url>http://127.0.0.1:9010/abc/lock.cgi</url>
+        </lock>
+        <face>
+            <enable>1</enable>
+            <url>http://${faceIP}/DNAKE/abc/face.cgi</url>
+        </face>
+    </redirect>
+</msg>
