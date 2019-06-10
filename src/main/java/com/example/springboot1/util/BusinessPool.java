@@ -25,12 +25,12 @@ public class BusinessPool {
 
     private int index = 0 ;
 
-    private int poolSize = 16;
+    private int poolSize = 2;
 
     @PostConstruct
     void initMonitor(){
         executor = new ThreadPoolExecutor(poolSize, poolSize, 0L, TimeUnit.MILLISECONDS,
-                new LinkedBlockingDeque<>(1), new RejectedExecutionHandler() {
+                new LinkedBlockingQueue<>(1), new RejectedExecutionHandler() {
             @Override
             public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
                 if (!executor.isShutdown()) {
@@ -53,7 +53,7 @@ public class BusinessPool {
      * 监听队列
      */
     private void monitorQueue(){
-        while (businessQueue.isEmpty() && executor.getQueue().remainingCapacity() == 0){
+        while (businessQueue.isEmpty()){
         };
         Runnable r = getCurrentRunnable();
         if(r!=null){
@@ -109,11 +109,11 @@ public class BusinessPool {
         for(int i = 0; i <= 20;i++){
             if( i>0 && i%5 == 0){
                 try {
-                    TimeUnit.SECONDS.sleep(10);
+                    TimeUnit.SECONDS.sleep(5);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                businessPool.addWork(list);
+//                businessPool.addWork(list);
                 list = new ArrayList<>();
             }
 
@@ -121,7 +121,7 @@ public class BusinessPool {
             list.add(()->{
                 System.out.println(threadName);
                 try {
-                    TimeUnit.SECONDS.sleep(2);
+                    TimeUnit.SECONDS.sleep(5);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

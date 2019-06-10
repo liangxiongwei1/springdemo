@@ -55,7 +55,7 @@ public class BusinessBlockPool {
     private void monitorQueue(){
         List<Runnable> list;
         try {
-            while ((list = businessQueue.take()).isEmpty() && executor.getQueue().remainingCapacity() == 0){
+            while ((list = businessQueue.take()).isEmpty()){
             }
             Runnable r = getCurrentRunnable(list);
             if(r!=null){

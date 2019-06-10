@@ -42,5 +42,6 @@ public class CreateGroup implements Watcher {
         createGroup.connect("localhost:2181");
         createGroup.create("test");
         createGroup.close();
+
     }
 }
